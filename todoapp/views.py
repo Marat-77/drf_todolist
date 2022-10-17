@@ -1,5 +1,9 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.mixins import CreateModelMixin, ListModelMixin, \
+    RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
+from rest_framework.response import Response
+from rest_framework import status
 from .models import Project, Todo
 from .serializers import ProjectHyperlinkedModelSerializer
 from .serializers import TodoHyperlinkedModelSerializer
@@ -20,8 +24,19 @@ class ProjectModelViewSet(ModelViewSet):
     pagination_class = ProjectLimitOffsetPagination
     filterset_class = ProjectFilter
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.is_active = False
+        instance.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
-class TodoModelViewSet(ModelViewSet):
+
+class TodoModelViewSet(CreateModelMixin,
+                       ListModelMixin,
+                       RetrieveModelMixin,
+                       UpdateModelMixin,
+                       DestroyModelMixin,
+                       GenericViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoHyperlinkedModelSerializer
     pagination_class = ToDoLimitOffsetPagination
@@ -29,3 +44,9 @@ class TodoModelViewSet(ModelViewSet):
     # filterset_class = TodoProjectFilter
     # filterset_class = [TodoFilter, TodoProjectFilter]
     # TodoProjectFilter
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        instance.is_active = False
+        instance.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)
