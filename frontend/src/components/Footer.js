@@ -1,9 +1,12 @@
+import React, { Component } from 'react';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({date}) => {
     return(
-        <div className="footer">footer. copiright.</div>
+        <div className="footer">
+            footer. copiright. {date}
+        </div>
     )
 }
 
-export default Footer
+export default Footer;

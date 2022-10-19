@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from 'react';
+// import React from "react";
 import './User.css';
 
 const UserItem = ({user}) => {
@@ -24,6 +25,6 @@ const UserList = ({users}) => {
     )
 }
 
-export default UserList
+export default UserList;
 
 // компонент Users
