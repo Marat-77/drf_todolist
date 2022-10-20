@@ -1,4 +1,14 @@
 .menu {
     background-color: rgb(155, 245, 175);
-    min-height: 30px;
+    min-height: 50px;
   }
+.container {
+  margin: 0 auto;
+  max-width: 1024px;
+}
+.ulmenu {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  max-width: 80%;
+}

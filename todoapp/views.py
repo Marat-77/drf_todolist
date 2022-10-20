@@ -21,7 +21,7 @@ class ToDoLimitOffsetPagination(LimitOffsetPagination):
 class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectHyperlinkedModelSerializer
-    pagination_class = ProjectLimitOffsetPagination
+    # pagination_class = ProjectLimitOffsetPagination
     filterset_class = ProjectFilter
 
     def destroy(self, request, *args, **kwargs):
@@ -39,7 +39,7 @@ class TodoModelViewSet(CreateModelMixin,
                        GenericViewSet):
     queryset = Todo.objects.all()
     serializer_class = TodoHyperlinkedModelSerializer
-    pagination_class = ToDoLimitOffsetPagination
+    # pagination_class = ToDoLimitOffsetPagination
     filterset_class = TodoFilter
     # filterset_class = TodoProjectFilter
     # filterset_class = [TodoFilter, TodoProjectFilter]

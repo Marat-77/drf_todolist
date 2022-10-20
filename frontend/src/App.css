@@ -1,6 +1,6 @@
 .my-main {
   background-color: rgb(175, 245, 175);
-  min-height: calc(100vh - 30px);
+  min-height: calc(100vh - 50px);
 }
 
 .content {
