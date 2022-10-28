@@ -10,3 +10,4 @@ sqlparse==0.4.3
 zipp==3.9.0
 
 requests~=2.28.1
+djangorestframework-simplejwt==5.2.2
