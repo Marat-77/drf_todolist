@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -50,6 +49,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'todoapp.apps.TodoappConfig',
     'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -146,7 +146,27 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAdminUser',
+        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ],
     # 'DEFAULT_PAGINATION_CLASS':
     #     'rest_framework.pagination.PageNumberPagination',
     # 'PAGE_SIZE': 100,
 }
+# from rest_framework.permissions import AllowAny, IsAuthenticated, \
+#     IsAdminUser, IsAuthenticatedOrReadOnly, BasePermission, \
+#     DjangoModelPermissionsOrAnonReadOnly, DjangoModelPermissions, \
+#     DjangoObjectPermissions
+
+# from rest_framework.authentication import BaseAuthentication, \
+#     BasicAuthentication, TokenAuthentication, SessionAuthentication, \
+#     RemoteUserAuthentication
