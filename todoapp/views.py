@@ -22,7 +22,7 @@ class ProjectModelViewSet(ModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectHyperlinkedModelSerializer
     # pagination_class = ProjectLimitOffsetPagination
-    filterset_class = ProjectFilter
+    # filterset_class = ProjectFilter
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()

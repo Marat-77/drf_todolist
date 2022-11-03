@@ -19,6 +19,9 @@ class Project(models.Model):
     updated_at = models.DateTimeField(auto_now=True,
                                       editable=False,
                                       verbose_name='Project Updated')
+    
+    def __str__(self) -> str:
+        return self.project_name
 
 
 class Todo(models.Model):
