@@ -23,6 +23,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import (TokenObtainPairView,
                                             TokenRefreshView,
                                             TokenVerifyView)
+from graphene_django.views import GraphQLView
 from users.views import CustomUserModelViewSet
 from todoapp.views import ProjectModelViewSet, TodoModelViewSet
 
@@ -60,6 +61,7 @@ urlpatterns = [
          name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
          name='schema-redoc'),
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]
 
 # http://127.0.0.1:8088/swagger/
