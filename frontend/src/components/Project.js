@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 // import React from "react";
 import './User.css';
 
-const ProjectItem = ({project}) => {
+const ProjectItem = ({ project, delete_project }) => {
     return (
         <tr>
             <td>
@@ -15,11 +15,14 @@ const ProjectItem = ({project}) => {
             <td>{Date.parse(project.created_at)}</td>
             <td>{Date.parse(project.updated_at)}</td>
             <td>{project.project_users}</td>
+            <td>
+                <button onClick={() => delete_project(project.id)} type='button'>Delete</button>
+            </td>
         </tr>
     )
 }
 
-const ProjectList = ({projects}) => {
+const ProjectList = ({ projects }) => {
     return (
         <table className="mytable">
             <th>Project Name</th>
@@ -27,7 +30,8 @@ const ProjectList = ({projects}) => {
             <th>Created</th>
             <th>Updated</th>
             <th>Project Users</th>
-            {projects.map((project_) => <ProjectItem project={project_}/>)}
+            <th></th>
+            {projects.map((project_) => <ProjectItem project={project_} />)}
         </table>
     )
 }

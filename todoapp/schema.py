@@ -37,4 +37,4 @@ class Query(graphene.ObjectType):
         return CustomUser.objects.all()
 
 
-schema = graphene.Schema()
+schema = graphene.Schema(query=Query)
