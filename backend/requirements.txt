@@ -18,3 +18,9 @@ drf-yasg==1.21.4
 
 # A Django integration for Graphene:
 graphene-django==3.0.0
+
+# PostgreSQL database adapter for the Python:
+psycopg2==2.9.5
+
+# Gunicorn server for deploy:
+gunicorn==20.1.0
